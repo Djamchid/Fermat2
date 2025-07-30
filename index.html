@@ -486,42 +486,12 @@
         // Fonction temporaire pour charger les données
         // Dans un vrai projet, cela chargerait depuis un fichier externe
         async function loadStoryFromFile() {
-            // Pour l'artifact, nous incluons une version minimale des données
-            // Dans un environnement réel, vous utiliseriez :
-            // const response = await fetch('story.js');
-            // return await response.json();
-            
-            return {
-                start: {
-                    title: "Prologue : Le Défi de Fermat",
-                    year: "1637 - Toulouse, France",
-                    text: `Vous êtes Pierre de Fermat, magistrat et mathématicien amateur. En lisant l'Arithmétique de Diophante, vous venez de découvrir une propriété fascinante des nombres. Dans la marge de votre livre, vous griffonnez une note qui hantera les mathématiciens pendant plus de 350 ans.`,
-                    formula: "x<sup>n</sup> + y<sup>n</sup> = z<sup>n</sup> n'a pas de solutions entières pour n > 2",
-                    choices: [
-                        { text: "A. Vous écrivez : 'J'ai découvert une démonstration merveilleuse, mais cette marge est trop étroite pour la contenir'", next: "fermat_claim" },
-                        { text: "B. Vous tentez immédiatement de démontrer le théorème par la méthode de descente infinie", next: "demo_failure" },
-                        { text: "C. Vous cherchez des contre-exemples pour vérifier votre intuition", next: "demo_failure" },
-                        { text: "D. Vous abandonnez, pensant que c'est trop difficile", next: "demo_failure" }
-                    ],
-                    progress: 10
-                },
-                fermat_claim: {
-                    title: "Chapitre 1 : L'Héritage d'un Mystère",
-                    year: "1995 - Princeton, États-Unis",
-                    text: `Vous êtes maintenant Andrew Wiles. Le chemin sera long mais vous réussirez ! (Version de démo - données complètes dans story.js)`,
-                    formula: "Il faut une approche révolutionnaire...",
-                    ending: "success",
-                    progress: 100
-                },
-                demo_failure: {
-                    title: "Impasse de Démonstration",
-                    text: `Cette approche ne fonctionne pas. Le vrai chemin nécessite les outils du 20ème siècle ! (Version de démo - chargez story.js pour le jeu complet)`,
-                    ending: "failure",
-                    progress: 25
-                }
-            };
-        }
-
+    const response = await fetch('fermat-story-data.js');
+    const text = await response.text();
+    // Évaluer le code JavaScript pour obtenir l'objet story
+    eval(text);
+    return story;
+}
         // Charger le jeu au démarrage
         loadStoryData();
     </script>
