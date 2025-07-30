@@ -486,12 +486,12 @@
         // Fonction temporaire pour charger les données
         // Dans un vrai projet, cela chargerait depuis un fichier externe
         async function loadStoryFromFile() {
-    const response = await fetch('fermat-story-data.js');
-    const text = await response.text();
-    // Évaluer le code JavaScript pour obtenir l'objet story
-    eval(text);
-    return story;
-}
+            const response = await fetch('fermat-story-data.js');
+            const text = await response.text();
+            // Évaluer le code JavaScript pour obtenir l'objet story
+            eval(text);
+            return story;
+        }
         // Charger le jeu au démarrage
         loadStoryData();
     </script>
